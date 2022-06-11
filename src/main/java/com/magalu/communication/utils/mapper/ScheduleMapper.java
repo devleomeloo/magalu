@@ -9,7 +9,7 @@ import org.mapstruct.factory.Mappers;
 public interface ScheduleMapper {
     ScheduleMapper INSTANCE = Mappers.getMapper(ScheduleMapper.class);
 
-    Schedule toModel(ScheduleDTO authorDTO);
+    Schedule toModel(ScheduleDTO scheduleDTO);
 
-    ScheduleDTO toDTO(Schedule author);
+    ScheduleDTO toDTO(Schedule schedule);
 }

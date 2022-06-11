@@ -4,6 +4,7 @@ import com.magalu.communication.model.dto.RecipientDTO;
 import com.magalu.communication.utils.enums.CommunicationTypeEnum;
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -11,7 +12,7 @@ import java.time.LocalDateTime;
 @Getter
 @Setter
 @Entity
-@Table(name = "Agenda")
+@Table(schema = "communication")
 public class Schedule extends Auditable {
 
     @Id

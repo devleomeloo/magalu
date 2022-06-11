@@ -10,9 +10,13 @@ import org.springframework.stereotype.Service;
 @Service
 public class ScheduleService {
 
-    private ScheduleController scheduleController;
-    private ScheduleMapper scheduleMapper;
-    private ScheduleRepository scheduleRepository;
+    private static final ScheduleMapper scheduleMapper = ScheduleMapper.INSTANCE;
+
+    private final ScheduleRepository scheduleRepository;
+
+    public ScheduleService(ScheduleRepository scheduleRepository) {
+        this.scheduleRepository = scheduleRepository;
+    }
 
     public void create(ScheduleDTO scheduleDTO){
 

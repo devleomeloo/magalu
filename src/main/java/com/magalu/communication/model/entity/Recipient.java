@@ -8,7 +8,7 @@ import javax.persistence.*;
 @Getter
 @Setter
 @Entity
-@Table(name = "destinatario")
+@Table(schema = "communication")
 public class Recipient extends Auditable{
 
     @Id
