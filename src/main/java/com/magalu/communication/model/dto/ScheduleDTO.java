@@ -24,7 +24,7 @@ public class ScheduleDTO {
     private LocalDateTime dateTime;
 
     @NotNull(message = "Informar o destinatário da notificação !")
-    private String recipientName;
+    private String recipient;
 
     @NotBlank(message = "Informar a mensagem a ser enviada ao destinatário !")
     private String message;
