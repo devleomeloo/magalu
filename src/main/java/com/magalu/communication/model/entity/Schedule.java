@@ -1,7 +1,7 @@
 package com.magalu.communication.model.entity;
 
-import com.magalu.communication.model.dto.RecipientDTO;
 import com.magalu.communication.utils.enums.CommunicationTypeEnum;
+import com.magalu.communication.utils.enums.ScheduleStatusEnum;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -11,7 +11,7 @@ import java.time.LocalDateTime;
 @Getter
 @Setter
 @Entity
-@Table(name = "Agenda")
+@Table(schema = "communication")
 public class Schedule extends Auditable {
 
     @Id
@@ -22,8 +22,8 @@ public class Schedule extends Auditable {
     @Column(name = "data_hora", nullable = false, columnDefinition = "TIMESTAMP")
     private LocalDateTime dateTime;
 
-    @OneToOne(cascade = {CascadeType.MERGE})
-    private Recipient recipient;
+    @Column(name = "destinatario ", nullable = false)
+    private String recipient;
 
     @Column(name = "mensagem ", nullable = false)
     private String message;
@@ -31,4 +31,9 @@ public class Schedule extends Auditable {
     @Enumerated(EnumType.STRING)
     @Column(name = "tipo_comunicacao ", nullable = false)
     private CommunicationTypeEnum communicationType;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "status ", nullable = false)
+    private ScheduleStatusEnum scheduleStatus;
+
 }
