@@ -37,4 +37,12 @@ public class ScheduleController {
     public List<Schedule> getAll(){
         return scheduleService.getAll();
     }
+
+    @DeleteMapping("{scheduleId}")
+    @ResponseStatus(HttpStatus.OK)
+    public ResponseEntity<MessageResponse> delete(@PathVariable Long scheduleId){
+        scheduleService.delete(scheduleId);
+
+        return ResponseEntity.status(HttpStatus.OK).body(new MessageResponse("Agendamento deletado com sucesso !"));
+    }
 }
