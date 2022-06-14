@@ -18,10 +18,12 @@ public class ScheduleService {
         this.scheduleRepository = scheduleRepository;
     }
 
-    public void create(ScheduleDTO scheduleDTO){
+    public ScheduleDTO create(ScheduleDTO scheduleDTO){
 
         Schedule scheduleToCreate = scheduleMapper.toModel(scheduleDTO);
-        scheduleRepository.save(scheduleToCreate);
+
+
+        return  scheduleMapper.toDTO(scheduleRepository.save(scheduleToCreate));
     }
 
 }
