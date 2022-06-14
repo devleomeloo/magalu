@@ -11,11 +11,12 @@ import javax.persistence.*;
 @Table(schema = "communication")
 public class Recipient extends Auditable{
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_destinatario", nullable = false)
-    private Long recipientId;
+//    @Id
+//    @GeneratedValue(strategy = GenerationType.IDENTITY)
+//    @Column(name = "id_destinatario", nullable = false)
+//    private Long recipientId;
 
+    @Id
     @Column(name = "nome", nullable = false)
     private String name;
 

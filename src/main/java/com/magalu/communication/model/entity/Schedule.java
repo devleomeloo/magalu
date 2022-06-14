@@ -23,7 +23,8 @@ public class Schedule extends Auditable {
     @Column(name = "data_hora", nullable = false, columnDefinition = "TIMESTAMP")
     private LocalDateTime dateTime;
 
-    @OneToOne(cascade = {CascadeType.MERGE})
+    @OneToOne(cascade = CascadeType.MERGE)
+    @JoinColumn(name = "recipient_nome", referencedColumnName = "nome")
     private Recipient recipient;
 
     @Column(name = "mensagem ", nullable = false)

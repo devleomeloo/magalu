@@ -21,8 +21,6 @@ public class ScheduleService {
     public ScheduleDTO create(ScheduleDTO scheduleDTO){
 
         Schedule scheduleToCreate = scheduleMapper.toModel(scheduleDTO);
-
-
         return  scheduleMapper.toDTO(scheduleRepository.save(scheduleToCreate));
     }
 
