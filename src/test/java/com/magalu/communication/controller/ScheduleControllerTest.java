@@ -16,7 +16,8 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.servlet.view.json.MappingJackson2JsonView;
 
 import java.time.LocalDateTime;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @ExtendWith(MockitoExtension.class)
@@ -45,7 +46,7 @@ public class ScheduleControllerTest {
         ScheduleDTO expectedCreatedScheduleDTO =
                 ScheduleDTO.builder()
                         .dateTime(LocalDateTime.now())
-                        .recipientName("Magalu")
+                        .recipient("Magalu")
                         .message("test")
                         .communicationType("SMS")
                 .build();
@@ -54,5 +55,13 @@ public class ScheduleControllerTest {
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(JsonConversionUtils.asJsonString(expectedCreatedScheduleDTO)))
                 .andExpect(status().isCreated());
+    }
+
+    @Test
+    void whenGETIsCalledThenStatusOkShouldBeReturned() throws Exception {
+
+        mockMvc.perform(get(SCHEDULE_API_URL_PATH)
+                        .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk());
     }
 }

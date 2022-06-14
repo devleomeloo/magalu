@@ -11,8 +11,13 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.time.LocalDateTime;
+import java.util.Collections;
+import java.util.List;
+import java.util.Optional;
 
 import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.core.Is.is;
+import static org.hamcrest.core.IsEqual.equalTo;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
@@ -34,7 +39,7 @@ public class ScheduleServiceTest {
         ScheduleDTO expectedScheduleToCreate =
                 ScheduleDTO.builder()
                         .dateTime(LocalDateTime.now())
-                        .recipientName(null)
+                        .recipient("Magalu")
                         .message("test")
                         .communicationType("SMS")
                         .build();
@@ -46,5 +51,25 @@ public class ScheduleServiceTest {
 
         //assert
         assertEquals(createdScheduleDTO, expectedScheduleToCreate);
+    }
+
+    @Test
+    void whenGETMethodIsCalledThenAllAppointmentsShouldBeReturned() {
+        //arrange
+        ScheduleDTO expectedScheduleToCreate =
+                ScheduleDTO.builder()
+                        .dateTime(LocalDateTime.now())
+                        .recipient("Magalu")
+                        .message("test")
+                        .communicationType("SMS")
+                        .build();
+        Schedule expectedCreatedSchedule = scheduleMapper.toModel(expectedScheduleToCreate);
+
+        //act
+        when(scheduleRepository.findAll()).thenReturn(Collections.singletonList(expectedCreatedSchedule));
+        List<Schedule> foundedSchedule = scheduleRepository.findAll();
+
+        //assert
+        assertThat(expectedCreatedSchedule, is(equalTo(foundedSchedule.get(0))));
     }
 }
