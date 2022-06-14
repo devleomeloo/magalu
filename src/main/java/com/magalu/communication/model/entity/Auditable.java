@@ -20,8 +20,4 @@ public abstract class Auditable {
     @CreatedDate
     @Column(nullable = false, columnDefinition = "TIMESTAMP")
     protected LocalDateTime createdDate;
-
-    @LastModifiedDate
-    @Column(columnDefinition = "TIMESTAMP")
-    protected LocalDateTime lastModifiedDate;
 }

@@ -1,6 +1,7 @@
 package com.magalu.communication.model.entity;
 
 import com.magalu.communication.utils.enums.CommunicationTypeEnum;
+import com.magalu.communication.utils.enums.ScheduleStatusEnum;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -30,4 +31,9 @@ public class Schedule extends Auditable {
     @Enumerated(EnumType.STRING)
     @Column(name = "tipo_comunicacao ", nullable = false)
     private CommunicationTypeEnum communicationType;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "status ", nullable = false)
+    private ScheduleStatusEnum scheduleStatus;
+
 }
