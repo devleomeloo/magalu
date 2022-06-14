@@ -1,0 +1,110 @@
+{
+	"info": {
+		"_postman_id": "70147a9b-8dae-4e4b-a31b-f6d7ffb10d1c",
+		"name": "Magalu",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "10232173"
+	},
+	"item": [
+		{
+			"name": "Create Schedule",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"dateTime\" : \"2022-06-10 23:30:02\",\r\n\t\"recipient\" : \"Magalu\",\r\n    \"message\": \"Seu produto chegará em 20.06.2022 !\",\r\n    \"communicationType\" : \"EMAIL\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/schedules",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"schedules"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Schedules",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"dateTime\" : \"2022-06-10 23:30:02\",\r\n\t\"recipientName\" : \"Leo\",\r\n    \"message\": \"leo1@test.com\",\r\n    \"communicationType\" : \"SMS\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/schedules",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"schedules"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Schedules",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"dateTime\" : \"2022-06-10 23:30:02\",\r\n\t\"recipientName\" : \"Leo\",\r\n    \"message\": \"leo1@test.com\",\r\n    \"communicationType\" : \"SMS\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/schedules/:scheduleId",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"schedules",
+						":scheduleId"
+					],
+					"variable": [
+						{
+							"key": "scheduleId",
+							"value": "2"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

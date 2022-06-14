@@ -20,7 +20,8 @@ import static org.hamcrest.core.Is.is;
 import static org.hamcrest.core.IsEqual.equalTo;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.times;
 
 @ExtendWith(MockitoExtension.class)
 public class ScheduleServiceTest {
@@ -71,5 +72,25 @@ public class ScheduleServiceTest {
 
         //assert
         assertThat(expectedCreatedSchedule, is(equalTo(foundedSchedule.get(0))));
+    }
+
+    @Test
+    void whenValidScheduleIdIsGivenThenItShouldBeDeleted() {
+        //Arrange
+        ScheduleDTO expectedScheduleDeletedDTO = ScheduleDTO.builder()
+                .dateTime(LocalDateTime.now())
+                .recipient("Magalu")
+                .message("test")
+                .communicationType("SMS")
+                .build();
+        Schedule expectedScheduleToDeleted = scheduleMapper.toModel(expectedScheduleDeletedDTO);
+
+        //Act
+        when(scheduleRepository.findById(1L)).thenReturn(Optional.of(expectedScheduleToDeleted));
+        doNothing().when(scheduleRepository).deleteById(1L);
+        scheduleService.delete(1L);
+
+        //Assert
+        verify(scheduleRepository, times(1)).deleteById(1L);
     }
 }

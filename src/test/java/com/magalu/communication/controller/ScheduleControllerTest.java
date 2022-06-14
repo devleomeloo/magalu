@@ -64,4 +64,12 @@ public class ScheduleControllerTest {
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk());
     }
+
+    @Test
+    void whenDELETEIsCalledThenStatusOkShouldBeReturned() throws Exception {
+
+        mockMvc.perform(delete(SCHEDULE_API_URL_PATH + "/1")
+                        .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk());
+    }
 }
